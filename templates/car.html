@@ -12,7 +12,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
-  document.querySelectorAll('#forward')[0].addEventListener('click', function() {
+  
+
+function ready(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+      document.querySelectorAll('#forward')[0].addEventListener('click', function() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/car/forward');
     xhr.send(null);
@@ -37,6 +44,9 @@
     xhr.open('GET', '/car/stop');
     xhr.send(null);
   }, false);
+
+  }
+}
 </script>
 
 <div id="divImage" class="col s12">
