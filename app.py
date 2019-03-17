@@ -1,6 +1,7 @@
 import explorerhat
 from flask import Flask
 from flask import jsonify
+from flask import render_template
 app = Flask(__name__)
 class DataStore():
     speed1 = 60
@@ -9,8 +10,8 @@ class DataStore():
 data = DataStore()
 
 @app.route('/')
-def hello():
-    return "Hello World!"
+def home():
+    return render_template('car.html')
 
 @app.route('/car/forward')
 def forward():
