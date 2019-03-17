@@ -3,9 +3,9 @@ from flask import Flask
 from flask import jsonify
 app = Flask(__name__)
 class DataStore():
-    speed = 0
+    speed1 = 60
+    speed2 = 60
     mod = 5
-    direction = 'forwards'
 data = DataStore()
 
 @app.route('/')
@@ -14,28 +14,38 @@ def hello():
 
 @app.route('/car/forward')
 def forward():
-    if data.speed+data.mod<=100:
-        data.speed = data.speed + data.mod
-    if data.speed>=0:
-        data.direction = 'forwards'
-        explorerhat.motor.forwards(data.speed)
-    else:
-        data.direction = 'backwards'
-        explorerhat.motor.backwards(data.speed*-1)
-    jsonData = jsonify({'direction': data.direction, 'speed': data.speed})
+    speedN = max(data.speed1, data.speed2, 60)
+    data.speed1 = speedN + data.mod
+    data.speed2 = speedN + data.mod
+    explorerhat.motor.one.speed(data.speed1)
+    explorerhat.motor.two.speed(data.speed2)
+    jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
     return jsonData
 @app.route('/car/backward') 
 def backward():
-     if data.speed+data.mod<=-100:
-         data.speed = data.speed - data.mod
-     if data.speed>=0:
-         data.direction = 'forwards'
-         explorerhat.motor.forwards(data.speed)
-     else:
-         data.direction = 'backwards'
-         explorerhat.motor.backwards(data.speed*-1)
-     jsonData = jsonify({'direction': data.direction, 'speed': data.speed})
-     return jsonData
+    speedN = min(data.speed1, data.speed2, -60)
+    data.speed1 = speedN - data.mod
+    data.speed2 = speedN - data.mod
+    explorerhat.motor.one.speed(data.speed1)
+    explorerhat.motor.two.speed(data.speed2)
+    jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
+    return jsonData
+@app.route('/car/left') 
+def left():
+    data.speed1 = 100
+    data.speed2 = 0
+    explorerhat.motor.one.speed(data.speed1)
+    explorerhat.motor.two.speed(data.speed2)
+    jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
+    return jsonData
+@app.route('/car/right') 
+def right():
+    data.speed1 = 0
+    data.speed2 = 100
+    explorerhat.motor.one.speed(data.speed1)
+    explorerhat.motor.two.speed(data.speed2)
+    jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
+    return jsonData
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
