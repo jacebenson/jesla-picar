@@ -12,28 +12,30 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
-$( document ).ready(function() {
-  $( "#forward" ).click(function() {
-    $.get("/car/forward", function( data ) {
-      console.log("forward", data);
-    });
-  });
-  $( "#left" ).click(function() {
-    $.get("/car/left", function( data ) {
-      console.log("left", data);
-    });
-  });
-  $( "#right" ).click(function() {
-    $.get("/car/right", function( data ) {
-      console.log("right", data);
-    });
-  });
-  $( "#backward" ).click(function() {
-    $.get("/car/backward", function( data ) {
-      console.log("backward", data);
-    });
-  });
-});
+  var forward = document.querySelectorAll('#forward');
+  forward.addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/car/forward');
+    xhr.send(null);
+  }, false);
+  var left = document.querySelectorAll('#left');
+  left.addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/car/left');
+    xhr.send(null);
+  }, false);
+  var right = document.querySelectorAll('#right');
+  right.addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/car/right');
+    xhr.send(null);
+  }, false);
+  var backward = document.querySelectorAll('#backward');
+  backward.addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/car/backward');
+    xhr.send(null);
+  }, false);
 </script>
 
 <div id="divImage" class="col s12">
