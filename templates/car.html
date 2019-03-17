@@ -1,50 +1,46 @@
-<script
-			  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-			  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-			  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection" />
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src="{{ url_for('static', filename="js/main_scripts.js")}}"></script>
-<form class="form-horizontal">
-  <fieldset>
 
-    <!-- Form Name -->
-    <legend>Jesla Controller</legend>
-    <div class="container">
-      <div class="row" id="top-row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <a href="#forward" id="forward" name="forward" class="btn btn-primary">⏫<an
-        </div>
-        <div class="col-sm-4"></div>
-      </div>
-      <div class="row" id="middle-row">
-        <div class="col-sm-4">
-          <a href="#left" id="left" name="left" class="btn btn-primary">◀️</ba 
-        </div>
-        <div class="col-sm-4">
-          <a href="#stop" id="stop" name="stop" class="btn btn-primary">���</a>
-        </div>
-        <div class="col-sm-4">
-          <a href="#right" id="right" name="right" class="btn btn-primary">▶️</ba>
-        </div>
-      </div>
-      <div class="row" id="bottom-row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <a href="#backward" id="backward" name="backward" class="btn btn-primary">⏬</a>
-        </div>
-          <div class="col-sm-4"></div>
-      </div>
-
-    </div>
-  </fieldset>
-</form>
-
+<div id="divImage" class="col s12">
+<div class="row">
+<div class="col s6 center">
+<table class="table-move">
+  <tr>
+    <td></td>
+    <td>
+      <button id="forward" class="btn btn-move"><i class="material-icons">keyboard_arrow_up</i></button>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <button id="left" class="btn btn-move"><i class="material-icons">keyboard_arrow_left</i></button>
+    </td>
+    <td>
+      <button id="stop" class="btn btn-move"><i class="material-icons">home</i></button>
+    </td>
+    <td>
+      <button id="right" class="btn btn-move"><i class="material-icons">keyboard_arrow_right</i></button>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <button id="backward" class="btn btn-move"><i class="material-icons">keyboard_arrow_down</i></button>
+    </td>
+    <td></td>
+  </tr>
+</table>
+</div>
