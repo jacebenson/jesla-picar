@@ -47,6 +47,14 @@ def right():
     explorerhat.motor.two.speed(data.speed2)
     jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
     return jsonData
+@app.route('/car/stop') 
+def right():
+    data.speed1 = 0
+    data.speed2 = 0
+    explorerhat.motor.one.speed(data.speed1)
+    explorerhat.motor.two.speed(data.speed2)
+    jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
+    return jsonData
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
