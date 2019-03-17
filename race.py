@@ -16,29 +16,44 @@ def getch():
     termios.tcsetattr(0, termios.TCSANOW, old_settings)
   return ch
 
-speed = 0
+speed = 60
 mod = 5
-
+speed1 = 60
+speed2 = 60
+# at 60 both motors work.. make 60 my base number.
 while True:
     ch = getch()
-    
-#   if (abs(speed))+modifer < 100:
     if ch=='w':
-        if speed+mod<=100:
-            speed = speed + mod
+        speedN = max(speed1, speed2, 60)
+        speed1 = speedN + mod
+        speed2 = speedN + mod
     if ch=='s':
-        if speed-mod>=-100:
-            speed = speed - mod
+        speedN = min(speed1, speed2, -60)
+        speed1 = speedN - mod
+        speed2 = speedN - mod
     if ch=='a': #turn left
-        explorerhat.motor.one.forwards(speed-10)
+        speed1 = 100
+        speed2 = 0
     if ch=='d': #turn right
-        explorerhat.motor.two.forwards(speed-10)
-    if speed>0 and speed<100:
-        explorerhat.motor.forwards(speed)
-    if speed>-100 and speed<0:
-        explorerhat.motor.backwards(speed*-1)
-    print(" " + str(speed))
-    # else:
-  #      print("At full speed")
-#    explorerhat.pause()
+        speed1 = 0
+        speed2 = 100
+    if speed1>100:
+        speed1 = 100
+    if speed1<-100:
+        speed1 = -100
+    if speed2>100:
+        speed2 = 100
+    if speed2<-100:
+        speed2 = -100
+    print(" speed1: " + str(speed1) + " speed2: " + str(speed2))
+    explorerhat.motor.one.speed(speed1)
+    explorerhat.motor.two.speed(speed2)
 
+    #print(" speed: " + str(speed) + " speed1: " + str(speed1) + " speed2: " + str(speed2))
+    
+    if ch=='1':
+        speed1 = speed1 + mod
+        explorerhat.motor.one.speed(speed1)
+    if ch=='2':
+        speed2 = speed2 + mod
+        explorerhat.motor.two.speed(speed2)
