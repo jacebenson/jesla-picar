@@ -48,7 +48,7 @@ def right():
     jsonData = jsonify({'speed1': data.speed1, 'speed2': data.speed2})
     return jsonData
 @app.route('/car/stop') 
-def right():
+def stop():
     data.speed1 = 0
     data.speed2 = 0
     explorerhat.motor.one.speed(data.speed1)
