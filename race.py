@@ -18,8 +18,8 @@ def getch():
 
 speed = 60
 mod = 5
-speed1 = 60
-speed2 = 60
+speed1 = 0
+speed2 = 0
 # at 60 both motors work.. make 60 my base number.
 while True:
     ch = getch()
