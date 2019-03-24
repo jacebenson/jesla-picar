@@ -23,20 +23,23 @@ speed2 = 0
 # at 60 both motors work.. make 60 my base number.
 while True:
     ch = getch()
-    if ch=='w':
+    if ch=='w' or ch=='8':
         speedN = max(speed1, speed2, 60)
         speed1 = speedN + mod
         speed2 = speedN + mod
-    if ch=='s':
+    if ch=='s' or ch=='2':
         speedN = min(speed1, speed2, -60)
         speed1 = speedN - mod
         speed2 = speedN - mod
-    if ch=='a': #turn left
+    if ch=='a' or ch=='4': #turn left
         speed1 = 100
         speed2 = 0
-    if ch=='d': #turn right
+    if ch=='d' or ch=='6': #turn right
         speed1 = 0
         speed2 = 100
+    if ch=='5':
+        speed1 = 0
+        speed2 = 0
     if speed1>100:
         speed1 = 100
     if speed1<-100:
