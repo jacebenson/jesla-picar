@@ -35,54 +35,63 @@ reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, True, 0, 1000)
  
  
 def allStop():
+	print('allStop')
 	forwardLeft.value = 0
 	reverseLeft.value = 0
 	forwardRight.value = 0
 	reverseRight.value = 0
  
 def forwardDrive():
+	print('forwardDrive')
 	forwardLeft.value = 1.0
 	reverseLeft.value = 0
 	forwardRight.value = 1.0
 	reverseRight.value = 0
  
 def reverseDrive():
+	print('reverseDrive')
 	forwardLeft.value = 0
 	reverseLeft.value = 1.0
 	forwardRight.value = 0
 	reverseRight.value = 1.0
  
 def spinLeft():
+	print('spinLeft')
 	forwardLeft.value = 0
 	reverseLeft.value = 1.0
 	forwardRight.value = 1.0
 	reverseRight.value = 0
  
 def SpinRight():
+	print('spinRight')
 	forwardLeft.value = 1.0
 	reverseLeft.value = 0
 	forwardRight.value = 0
 	reverseRight.value = 1.0
  
 def forwardTurnLeft():
+	print('forwardTurnLeft')
 	forwardLeft.value = 0.2
 	reverseLeft.value = 0
 	forwardRight.value = 0.8
 	reverseRight.value = 0
  
 def forwardTurnRight():
+	print('forwardTurnRight')
 	forwardLeft.value = 0.8
 	reverseLeft.value = 0
 	forwardRight.value = 0.2
 	reverseRight.value = 0
  
 def reverseTurnLeft():
+	print('reverseTurnLeft')
 	forwardLeft.value = 0
 	reverseLeft.value = 0.2
 	forwardRight.value = 0
 	reverseRight.value = 0.8
  
 def reverseTurnRight():
+	print('reverseTurnRight')
 	forwardLeft.value = 0
 	reverseLeft.value = 0.8
 	forwardRight.value = 0
