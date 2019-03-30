@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
- 
+
 """
 File: skidsteer_four_pwm_test.py
  
@@ -16,7 +16,8 @@ __license__ = "MIT"
  
 from gpiozero import PWMOutputDevice
 from time import sleep
- 
+import sys, tty, termios
+
 #///////////////// Define Motor Driver GPIO Pins /////////////////
 # Motor A, Left Side GPIO CONSTANTS
 PWM_FORWARD_LEFT_PIN = 26	# IN1 - Forward Drive
@@ -117,7 +118,30 @@ def main():
 	sleep(5)
 	allStop()
  
- 
-if __name__ == "__main__":
-    """ This is executed when run from the command line """
-    main()
+
+print("Press CTRL+C to exit.")
+
+def getch():
+  import sys, tty, termios
+  old_settings = termios.tcgetattr(0)
+  new_settings = old_settings[:]
+  new_settings[3] &= ~termios.ICANON
+  try:
+    termios.tcsetattr(0, termios.TCSANOW, new_settings)
+    ch = sys.stdin.read(1)
+  finally:
+    termios.tcsetattr(0, termios.TCSANOW, old_settings)
+  return ch
+
+while True:
+    ch = getch()
+    if ch=='w' or ch=='8':
+	forwardDrive()
+    if ch=='s' or ch=='2':
+        reverseDrive()
+    if ch=='a' or ch=='4': #turn left
+        spinLeft()
+    if ch=='d' or ch=='6': #turn right
+	SpinRight()
+    if ch=='5':
+	allStop()
